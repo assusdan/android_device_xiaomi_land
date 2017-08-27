@@ -54,7 +54,7 @@ static void import_cmdline(const std::string& key,
         const std::string& value, bool for_emulator __attribute__((unused)))
 {
     if (key.empty()) return;
-
+    NOTICE(key.c_str());
     if (key == "board_id") {
         std::istringstream iss(value);
         std::string token;
@@ -139,7 +139,7 @@ void read_ramconfig()
 
 void variant_properties()
 {
-    if (property_get("ro.xpe.device") != "land")
+    if (property_get("ro.cm.device") != "land")
         return;
 
     import_kernel_cmdline(0, import_cmdline);
